@@ -14,6 +14,7 @@ export default new Router({
       children: [
         {
           path: 'film',
+          name: 'Film',
           component: {
             template: '<div> hola</div>',
           },

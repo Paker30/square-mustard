@@ -1,11 +1,13 @@
 <template>
   <p>hola</p>
 </template>
+
 <script>
 export default {
-  name: 'film'
-}
+  name: 'film',
+};
 </script>
+
 <style scoped>
 
 </style>
