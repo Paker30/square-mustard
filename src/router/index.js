@@ -9,8 +9,16 @@ export default new Router({
       path: '/',
       name: 'Films',
       component: {
-        template: '<mustard-films/>',
+        template: '<div><mustard-films/></div>',
       },
+      children: [
+        {
+          path: 'film',
+          component: {
+            template: '<div> hola</div>',
+          },
+        },
+      ],
     },
   ],
 });
