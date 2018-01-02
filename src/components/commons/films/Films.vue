@@ -4,7 +4,7 @@
       <template v-for="item in films">
         <v-subheader v-if="item.header" v-text="item.header"></v-subheader>
         <v-divider v-else-if="item.divider" v-bind:inset="item.inset"></v-divider>
-        <v-list-tile avatar v-else v-bind:key="item.title" @click=''>
+        <v-list-tile avatar v-else v-bind:key="item.title" v-on:click="filmControls">
           <v-list-tile-content>
             <v-list-tile-title v-html="item.title"></v-list-tile-title>
             <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
@@ -48,6 +48,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    filmControls() {
+      this.$router.push('film');
+    },
   },
 };
 </script>
