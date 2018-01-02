@@ -27,28 +27,28 @@ export default {
       films: [
         { header: 'Today' },
         {
-          avatar: "/static/doc-images/lists/1.jpg",
-          title: "Brunch this weekend?",
+          avatar: '/static/doc-images/lists/1.jpg',
+          title: 'Brunch this weekend?',
           subtitle:
-            '<span class="grey--text text--darken-2">Ali Connors</span> &mdash; I\'ll be in your neighborhood doing errands this weekend. Do you want to hang out?'
+            '<span class="grey--text text--darken-2">Ali Connors</span> &mdash; I\'ll be in your neighborhood doing errands this weekend. Do you want to hang out?',
         },
         { divider: true, inset: true },
         {
-          avatar: "/static/doc-images/lists/2.jpg",
+          avatar: '/static/doc-images/lists/2.jpg',
           title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
           subtitle:
-            '<span class="grey--text text--darken-2">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I\'m out of town this weekend.'
+            '<span class="grey--text text--darken-2">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I\'m out of town this weekend.',
         },
         { divider: true, inset: true },
         {
-          avatar: "/static/doc-images/lists/3.jpg",
-          title: "Oui oui",
+          avatar: '/static/doc-images/lists/3.jpg',
+          title: 'Oui oui',
           subtitle:
-            '<span class="grey--text text--darken-2"å>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?'
-        }
-      ]
+            '<span class="grey--text text--darken-2"å>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 <style scoped>
