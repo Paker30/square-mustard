@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Films from '@/components/Films';
 
 Vue.use(Router);
 
@@ -9,7 +8,9 @@ export default new Router({
     {
       path: '/',
       name: 'Films',
-      component: Films,
+      component: {
+        template: '<mustard-films/>',
+      },
     },
   ],
 });
