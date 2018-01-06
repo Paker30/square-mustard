@@ -1,12 +1,14 @@
 <template>
     <v-layout row wrap>
       <v-flex xs9>
-        <v-breadcrumbs divider="/">
-          <v-breadcrumbs-item v-for="secction in path"
-            :key="secction.dir" :disabled="secction.disabled" v-on:click="goTo(secction.dir)">
-            {{ secction.dir }}
-          </v-breadcrumbs-item>
-        </v-breadcrumbs>
+        <div>
+          <v-breadcrumbs divider="/">
+            <v-breadcrumbs-item v-for="secction in path"
+              :key="secction.dir" :disabled="secction.disabled">
+              {{ secction.dir }}
+            </v-breadcrumbs-item>
+          </v-breadcrumbs>
+        </div>
         <v-list two-line>
           <template v-for="film in films">
             <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film.pretty)">
@@ -45,7 +47,8 @@ export default {
       dir.match(/(.)*[.]/g) ? this.filmControls() : this.exploreFilm(dir);
     },
     filmControls() {
-      this.$router.push("film");
+      const film = this.path[this.path.length - 1];
+      this.$router.push(`/film/${film.dir}`);
     },
     exploreFilm(dir) {
       const uri = dir
@@ -59,10 +62,7 @@ export default {
           this.films = [];
         });
     },
-    goTo(dir) {
-      console.log(dir);
-    }
-  }
+  },
 };
 </script>
 <style scoped>

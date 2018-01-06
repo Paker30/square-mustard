@@ -13,7 +13,7 @@ export default new Router({
       },
       children: [
         {
-          path: 'film',
+          path: 'film/:film',
           name: 'Film',
           component: {
             template: '<div><mustard-film/></div>',
