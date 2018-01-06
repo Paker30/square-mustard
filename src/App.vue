@@ -2,20 +2,17 @@
   <div id="app">
     <mustard-header/>
       <v-content>
-        <v-container fluid fill-height>
-          <v-layout justify-center align-center>
+        <v-container grid-list-md>
             <router-view/>
-          </v-layout>
         </v-container>
       </v-content>
   </div>
 </template>
 
 <script>
-// import Header from './components/MyBar';
 
 export default {
-  name: 'app',
+  name: "app",
   components: { },
 };
 </script>

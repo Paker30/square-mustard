@@ -16,7 +16,7 @@ export default new Router({
           path: 'film',
           name: 'Film',
           component: {
-            template: '<div> hola</div>',
+            template: '<div><mustard-film/></div>',
           },
         },
       ],
