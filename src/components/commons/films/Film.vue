@@ -31,10 +31,10 @@
 
 <script>
 export default {
-  name: "film",
+  name: 'film',
   data() {
     return {
-      film: ""
+      film: ''
     };
   },
   created() {
@@ -45,7 +45,7 @@ export default {
     stop() {},
     forward() {},
     rewind() {}
-  }
+  },
 };
 </script>
 

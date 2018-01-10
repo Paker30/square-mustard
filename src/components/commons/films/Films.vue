@@ -28,13 +28,13 @@
 
 <script>
 export default {
-  name: "films",
+  name: 'films',
   data() {
     return {
       films: [],
-      path: [{ dir: "home", disabled: true }],
-      server: "http://localhost:8000",
-      endpoint: "/video"
+      path: [{ dir: 'home', disabled: true }],
+      server: 'http://localhost:8000',
+      endpoint: '/video'
     };
   },
   created() {
@@ -58,7 +58,6 @@ export default {
         .get(uri)
         .then(response => (this.films = response.body))
         .catch(error => {
-          console.error(error);
           this.films = [];
         });
     },
