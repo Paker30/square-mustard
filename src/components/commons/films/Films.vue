@@ -4,8 +4,10 @@
         <div>
           <v-breadcrumbs divider="/">
             <v-breadcrumbs-item v-for="secction in path"
-              :key="secction.dir" :disabled="secction.disabled">
-              {{ secction.dir }}
+              :key="secction.dir">
+                <v-btn depressed small v-on:click="goBackTo(secction.dir)">
+                  {{ secction.dir }}
+                </v-btn>
             </v-breadcrumbs-item>
           </v-breadcrumbs>
         </div>
@@ -28,32 +30,31 @@
 
 <script>
 export default {
-  name: 'films',
+  name: "films",
   data() {
     return {
       films: [],
-      path: [{ dir: 'home', disabled: true }],
+      path: [{ dir: 'home', section: '', disabled: true }],
       server: 'http://localhost:8000',
-      endpoint: '/video'
+      endpoint: '/video',
     };
   },
   created() {
-    this.exploreFilm();
+    this.exploreFilmPath();
   },
   methods: {
     selectFilm(dir) {
       this.path[this.path.length - 1].disabled = false;
-      this.path.push({ dir, disabled: true });
-      dir.match(/(.)*[.]/g) ? this.filmControls() : this.exploreFilm(dir);
+      this.path.push({ dir, section: dir, disabled: true });
+      dir.match(/(.)*[.]/g) ? this.getFilmControls(dir) : this.exploreFilmPath();
     },
-    filmControls() {
+    getFilmControls(dir) {
       const film = this.path[this.path.length - 1];
       this.$router.push(`/film/${film.dir}`);
     },
-    exploreFilm(dir) {
-      const uri = dir
-        ? `${this.server}${this.endpoint}/${dir}`
-        : `${this.server}${this.endpoint}`;
+    exploreFilmPath() {
+      const filmRoute = this.path.map((section) => section.section);
+      const uri = `${this.server}${this.endpoint}${filmRoute.join('/')}`;
       this.$http
         .get(uri)
         .then(response => (this.films = response.body))
@@ -61,7 +62,14 @@ export default {
           this.films = [];
         });
     },
-  },
+    goBackTo(title) {
+      const index = this.path.findIndex(item => {
+        return item.dir === title;
+      });
+      this.path = this.path.slice(0, index === 0 ? 1 : index);
+      this.$router.push({ path: '/' });
+    }
+  }
 };
 </script>
 <style scoped>
