@@ -52,7 +52,8 @@ export default {
     },
     getFilmControls(dir) {
       const film = this.path[this.path.length - 1];
-      this.$router.push(`/film/${film.dir}`);
+      debugger;
+      this.$router.push( { path: `/film/${film.dir}`, params: { fullPath: this.path}});
     },
     exploreFilmPath() {
       const filmRoute = this.path.map(section => section.section);
@@ -66,7 +67,7 @@ export default {
     },
     goBackTo(title) {
       const index = this.path.findIndex(item => item.dir === title);
-      this.path = this.path.slice(0, (index + 1));
+      this.path = this.path.slice(0, index + 1);
       if (this.$router.currentRoute.path !== "/") {
         this.$router.push({ path: "/" });
       } else {
