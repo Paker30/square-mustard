@@ -34,9 +34,9 @@ export default {
   data() {
     return {
       films: [],
-      path: [{ dir: 'home', section: '', disabled: true }],
-      server: 'http://localhost:8000',
-      endpoint: '/video',
+      path: [{ dir: "home", section: "", disabled: true }],
+      server: "http://localhost:8000",
+      endpoint: "/video"
     };
   },
   created() {
@@ -46,15 +46,17 @@ export default {
     selectFilm(dir) {
       this.path[this.path.length - 1].disabled = false;
       this.path.push({ dir, section: dir, disabled: true });
-      dir.match(/(.)*[.]/g) ? this.getFilmControls(dir) : this.exploreFilmPath();
+      dir.match(/(.)*[.]/g)
+        ? this.getFilmControls(dir)
+        : this.exploreFilmPath();
     },
     getFilmControls(dir) {
       const film = this.path[this.path.length - 1];
       this.$router.push(`/film/${film.dir}`);
     },
     exploreFilmPath() {
-      const filmRoute = this.path.map((section) => section.section);
-      const uri = `${this.server}${this.endpoint}${filmRoute.join('/')}`;
+      const filmRoute = this.path.map(section => section.section);
+      const uri = `${this.server}${this.endpoint}${filmRoute.join("/")}`;
       this.$http
         .get(uri)
         .then(response => (this.films = response.body))
@@ -63,11 +65,13 @@ export default {
         });
     },
     goBackTo(title) {
-      const index = this.path.findIndex(item => {
-        return item.dir === title;
-      });
-      this.path = this.path.slice(0, index === 0 ? 1 : index);
-      this.$router.push({ path: '/' });
+      const index = this.path.findIndex(item => item.dir === title);
+      this.path = this.path.slice(0, (index + 1));
+      if (this.$router.currentRoute.path !== "/") {
+        this.$router.push({ path: "/" });
+      } else {
+        this.exploreFilmPath();
+      }
     }
   }
 };
