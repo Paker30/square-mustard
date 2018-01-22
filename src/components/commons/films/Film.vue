@@ -31,50 +31,45 @@
 
 <script>
 export default {
-  name: 'film',
+  name: "film",
   data() {
     return {
-      film: '',
-      path: '',
-      action: '',
-      server: 'http://localhost:8000',
-      endpoint: `/action/${this.action}/video/${this.film}`
+      film: "",
+      path: "",
+      action: "",
+      server: "http://localhost:8000"
     };
   },
   created() {
     this.film = this.$route.params.film;
-    this.path = this.$route.fullPath;
+    this.path = this.$route.params.path;
   },
   methods: {
     play() {
-      debugger;
-      this.action = 'play';
+      this.action = "play";
       this.launchAction();
     },
     stop() {
-      this.action = 'stop';
+      this.action = "stop";
       this.launchAction();
     },
     forward() {
-      this.action = 'forward';
+      this.action = "forward";
       this.launchAction();
     },
     rewind() {
-      this.action = 'rewind';
+      this.action = "rewind";
       this.launchAction();
     },
     launchAction() {
       this.$http
-        .get(`${this.server}${this.endpoint}`)
-        .then(response => (this.films = response.body))
-        .catch(error => {
-          this.films = [];
-        });
-    },
-  },
+        .post(`${this.server}/action/${this.action}/video/${this.film}`)
+        .then((response) => this.films = response.body)
+        .catch((error) => console.error('error'));
+    }
+  }
 };
 </script>
-
 <style scoped>
 
 </style>
