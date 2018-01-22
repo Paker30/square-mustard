@@ -31,13 +31,13 @@
 
 <script>
 export default {
-  name: "film",
+  name: 'film',
   data() {
     return {
-      film: "",
-      path: "",
-      action: "",
-      server: "http://localhost:8000"
+      film: '',
+      path: '',
+      action: '',
+      server: 'http://localhost:8000',
     };
   },
   created() {
@@ -46,19 +46,19 @@ export default {
   },
   methods: {
     play() {
-      this.action = "play";
+      this.action = 'play';
       this.launchAction();
     },
     stop() {
-      this.action = "stop";
+      this.action = 'stop';
       this.launchAction();
     },
     forward() {
-      this.action = "forward";
+      this.action = 'forward';
       this.launchAction();
     },
     rewind() {
-      this.action = "rewind";
+      this.action = 'rewind';
       this.launchAction();
     },
     launchAction() {
