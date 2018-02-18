@@ -37,7 +37,7 @@ export default {
       film: "",
       path: "",
       action: "",
-      server: "http://192.168.0.208:8000"
+      server: "http://localhost:8000"
     };
   },
   created() {
@@ -62,8 +62,9 @@ export default {
       this.launchAction();
     },
     launchAction() {
+      debugger;
       this.$http
-        .post(`${this.server}/action/${this.action}/video/${this.film}`, { path: this.path.join('/') })
+        .post(`${this.server}/action/${this.action}/video/${this.film}`, { path: this.path })
         .then(response => (this.films = response.body))
         .catch(error => console.error("error"));
     }
