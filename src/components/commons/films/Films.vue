@@ -44,7 +44,7 @@ export default {
   methods: {
     selectFilm(dir) {
       this.path[this.path.length - 1].disabled = false;
-      this.path.push({ dir, section: dir, disabled: true });
+      this.path.push({ dir: dir.pretty, section: dir, disabled: true });
       dir.isDirectory
         ? this.exploreFilmPath()
         : this.getFilmControls(dir.pretty);
