@@ -13,10 +13,9 @@
         </div>
         <v-list two-line>
           <template v-for="film in films">
-            <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film.pretty)">
+            <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film)">
               <v-list-tile-content>
                 <v-list-tile-title v-html="film.pretty">{{film.pretty}}</v-list-tile-title>
-                <!-- <v-list-tile-sub-title v-html="film.pretty">{{film.pretty}}</v-list-tile-sub-title> -->
               </v-list-tile-content>
             </v-list-tile>
           </template>
@@ -34,8 +33,8 @@ export default {
   data() {
     return {
       films: [],
-      path: [{ dir: 'home', section: '', disabled: true }],
-      server: 'http://192.168.0.208:8000',
+      path: [{ dir: 'home', section: {isDirectory: true, pretty: 'HOME', original: ''}, disabled: true }],
+      server: 'http://reno:8000',
       endpoint: '/video'
     };
   },
@@ -45,18 +44,18 @@ export default {
   methods: {
     selectFilm(dir) {
       this.path[this.path.length - 1].disabled = false;
-      this.path.push({ dir, section: dir, disabled: true });
-      dir.match(/(.)*[.]/g)
-        ? this.getFilmControls(dir)
-        : this.exploreFilmPath();
+      this.path.push({ dir: dir.pretty, section: dir, disabled: true });
+      dir.isDirectory
+        ? this.exploreFilmPath()
+        : this.getFilmControls(dir.pretty);
     },
     getFilmControls(dir) {
       const film = this.path[this.path.length - 1];
-      const filmRoute = this.path.map(section => section.section); //Sacar a función, se usa en exploreFilmPath también
+      const filmRoute = this.path.map(section => section.section.original); //Sacar a función, se usa en exploreFilmPath también
       this.$router.push( { name:'Film', params: { film:`${film.dir}`, path: filmRoute.join('/')}});
     },
     exploreFilmPath() {
-      const filmRoute = this.path.map(section => section.section);
+      const filmRoute = this.path.map(section => section.section.original);
       const uri = `${this.server}${this.endpoint}${filmRoute.join('/')}`;
       this.$http
         .get(uri)
