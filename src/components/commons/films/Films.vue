@@ -34,7 +34,7 @@ export default {
     return {
       films: [],
       path: [{ dir: 'home', section: {isDirectory: true, pretty: 'HOME', original: ''}, disabled: true }],
-      server: 'http://localhost:8000',
+      server: 'http://reno:8000',
       endpoint: '/video'
     };
   },

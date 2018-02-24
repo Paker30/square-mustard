@@ -37,7 +37,7 @@ export default {
       film: "",
       path: "",
       action: "",
-      server: "http://localhost:8000"
+      server: "http://reno:8000"
     };
   },
   created() {
