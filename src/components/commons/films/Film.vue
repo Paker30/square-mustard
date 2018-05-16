@@ -37,7 +37,11 @@ export default {
       film: "",
       path: "",
       action: "",
+<<<<<<< HEAD
       server: "http://192.168.0.208:8000"
+=======
+      server: "http://reno:8000"
+>>>>>>> 92ae30da495cbd6df91883999befccfc3cf54bd7
     };
   },
   created() {
