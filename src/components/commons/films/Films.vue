@@ -34,9 +34,9 @@ export default {
   data() {
     return {
       films: [],
-      path: [{ dir: 'home', section: '', disabled: true }],
-      server: 'http://192.168.0.208:8000',
-      endpoint: '/video'
+      path: [{ dir: "home", section: "", disabled: true }],
+      server: "http://192.168.0.208:8000",
+      endpoint: "/video"
     };
   },
   created() {
@@ -52,12 +52,18 @@ export default {
     },
     getFilmControls(dir) {
       const film = this.path[this.path.length - 1];
-      const filmRoute = this.path.map(section => section.section); //Sacar a función, se usa en exploreFilmPath también
-      this.$router.push( { name:'Film', params: { film:`${film.dir}`, path: filmRoute.join('/')}});
+      const filmRoute = this.path
+        .map(section => section.section)
+        .slice(0, -1)
+        .join("/"); //Sacar a función, se usa en exploreFilmPath también
+      this.$router.push({
+        name: "Film",
+        params: { film: `${film.dir}`, path: `${filmRoute}/` }
+      });
     },
     exploreFilmPath() {
       const filmRoute = this.path.map(section => section.section);
-      const uri = `${this.server}${this.endpoint}${filmRoute.join('/')}`;
+      const uri = `${this.server}${this.endpoint}${filmRoute.join("/")}`;
       this.$http
         .get(uri)
         .then(response => (this.films = response.body))
@@ -68,8 +74,8 @@ export default {
     goBackTo(title) {
       const index = this.path.findIndex(item => item.dir === title);
       this.path = this.path.slice(0, index + 1);
-      if (this.$router.currentRoute.path !== '/') {
-        this.$router.push({ path: '/' });
+      if (this.$router.currentRoute.path !== "/") {
+        this.$router.push({ path: "/" });
       } else {
         this.exploreFilmPath();
       }
@@ -78,5 +84,4 @@ export default {
 };
 </script>
 <style scoped>
-
 </style>

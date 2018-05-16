@@ -63,7 +63,7 @@ export default {
     },
     launchAction() {
       this.$http
-        .post(`${this.server}/action/${this.action}/video/${this.film}`, { path: this.path.join('/') })
+        .post(`${this.server}/action/${this.action}/video/${this.film}`, { path: this.path })
         .then(response => (this.films = response.body))
         .catch(error => console.error("error"));
     }
