@@ -13,16 +13,10 @@
         </div>
         <v-list two-line>
           <template v-for="film in films">
-<<<<<<< HEAD
             <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film.pretty)">
               <v-list-tile-content>
                 <v-list-tile-title v-html="film.pretty">{{film.pretty}}</v-list-tile-title>
                 <!-- <v-list-tile-sub-title v-html="film.pretty">{{film.pretty}}</v-list-tile-sub-title> -->
-=======
-            <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film)">
-              <v-list-tile-content>
-                <v-list-tile-title v-html="film.pretty">{{film.pretty}}</v-list-tile-title>
->>>>>>> 92ae30da495cbd6df91883999befccfc3cf54bd7
               </v-list-tile-content>
             </v-list-tile>
           </template>
