@@ -35,7 +35,7 @@ export default {
     return {
       films: [],
       path: [{ dir: 'home', section: '', disabled: true }],
-      server: 'http://localhost:8000',
+      server: 'http://192.168.0.208:8000',
       endpoint: '/video'
     };
   },
