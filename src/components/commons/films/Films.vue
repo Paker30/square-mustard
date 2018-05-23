@@ -77,10 +77,6 @@ export default {
       } else {
         this.exploreFilmPath();
       }
-      debugger;
-      this.$nextTick(function() {
-        this.$refs.toolbarChat.scrollTop = 0;
-      });
     },
   }
 };
