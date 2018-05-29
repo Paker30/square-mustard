@@ -11,12 +11,15 @@
             </v-breadcrumbs-item>
           </v-breadcrumbs>
         </div>
-        <v-list two-line>
+        <v-list>
           <template v-for="film in films">
             <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film.pretty)">
+              <v-list-tile-avatar>
+                <v-icon v-if="film.isDirectory">folder</v-icon>
+                <v-icon v-else>theaters</v-icon>
+              </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title v-html="film.pretty">{{film.pretty}}</v-list-tile-title>
-                <!-- <v-list-tile-sub-title v-html="film.pretty">{{film.pretty}}</v-list-tile-sub-title> -->
               </v-list-tile-content>
             </v-list-tile>
           </template>
@@ -66,8 +69,8 @@ export default {
       const uri = `${this.server}${this.endpoint}${filmRoute.join('/')}`;
       this.$http
         .get(uri)
-        .then(response => this.films = response.body)
-        .catch(() => this.films = []);
+        .then(response => (this.films = response.body))
+        .catch(() => (this.films = []));
     },
     goBackTo(title) {
       const index = this.path.findIndex(item => item.dir === title);
