@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <mustard-header/>
+    <mustard-header></mustard-header>
       <v-content>
-        <v-container grid-list-md>
+        <v-container fluid fill-height>
             <router-view/>
         </v-container>
       </v-content>
+    <mustard-footer></mustard-footer>
   </div>
 </template>
 

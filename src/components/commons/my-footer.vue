@@ -1,10 +1,14 @@
 <template>
-<v-footer color="indigo" app>
-      <span class="white--text">&copy; 2017</span>
-</v-footer>
+  <v-footer color="cyan" app>
+    <span class="white--text">With &hearts; from paco</span>
+    <v-spacer></v-spacer>
+    <span class="white--text">&copy; 2018</span>
+  </v-footer>
 </template>
 <script>
-export default {};
+export default {
+  name: 'my-footer',
+};
 </script>
 <style scoped>
 
