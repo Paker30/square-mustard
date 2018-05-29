@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid grid-list>
+  <v-container>
     <v-layout row justify-space-between>
       <v-flex offset-xs3>
         <v-btn flat color="black" v-on:click="play()">

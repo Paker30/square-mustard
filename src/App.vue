@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <mustard-header></mustard-header>
       <v-content>
         <v-container fluid fill-height>
@@ -7,7 +7,7 @@
         </v-container>
       </v-content>
     <mustard-footer></mustard-footer>
-  </div>
+  </v-app>
 </template>
 
 <script>

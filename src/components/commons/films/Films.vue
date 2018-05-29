@@ -1,19 +1,17 @@
 <template>
     <v-layout row wrap>
-      <v-flex xs9>
-        <div>
-          <v-breadcrumbs divider="/">
-            <v-breadcrumbs-item v-for="secction in path"
-              :key="secction.dir">
-                <v-btn depressed small v-on:click="goBackTo(secction.dir)">
-                  {{ secction.dir }}
-                </v-btn>
-            </v-breadcrumbs-item>
-          </v-breadcrumbs>
-        </div>
+      <v-flex>
+        <v-breadcrumbs divider="/">
+          <v-breadcrumbs-item v-for="secction in path"
+            :key="secction.dir">
+              <v-btn depressed small v-on:click="goBackTo(secction.dir)">
+                {{ secction.dir }}
+              </v-btn>
+          </v-breadcrumbs-item>
+        </v-breadcrumbs>
         <v-list>
           <template v-for="film in films">
-            <v-list-tile avatar v-bind:key="film.pretty" v-on:click="selectFilm(film.pretty)">
+            <v-list-tile avatar ripple v-bind:key="film.pretty" v-on:click="selectFilm(film.pretty)">
               <v-list-tile-avatar>
                 <v-icon v-if="film.isDirectory">folder</v-icon>
                 <v-icon v-else>theaters</v-icon>
@@ -25,7 +23,7 @@
           </template>
         </v-list>
       </v-flex>
-      <v-flex xs3>
+      <v-flex>
         <router-view/>
       </v-flex>
     </v-layout>
