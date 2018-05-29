@@ -37,7 +37,7 @@ export default {
       film: '',
       path: '',
       action: '',
-      server: 'http://192.168.0.208:8000'
+      server: 'http://192.168.0.208:8000',
     };
   },
   created() {
@@ -67,7 +67,7 @@ export default {
         .then(response => (this.films = response.body))
         .catch(error => console.error(error));
     },
-  }
+  },
 };
 </script>
 <style scoped>
